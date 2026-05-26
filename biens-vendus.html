@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biens Vendus – Cebeillac Immobilier Vichy</title>
+  <meta name="description" content="Découvrez les biens immobiliers vendus à Vichy et dans le Val d'Allier par Cebeillac Immobilier.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== BIENS VENDUS ===== */
+    .bv-intro {
+      text-align: center;
+      padding: 140px 24px 64px;
+      background: var(--dark);
+      color: var(--white);
+    }
+    .bv-intro .eyebrow { margin-bottom: 12px; }
+    .bv-intro h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .bv-intro p {
+      max-width: 660px;
+      margin: 0 auto 40px;
+      color: rgba(255,255,255,0.70);
+      font-size: 1.05rem;
+    }
+    .bv-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding: 0 0 16px;
+    }
+    .bv-stat { text-align: center; }
+    .bv-stat-num {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .bv-stat-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* GALERIE */
+    .bv-section {
+      padding: 72px 0 80px;
+      background: var(--cream);
+    }
+    .bv-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .bv-card {
+      background: var(--white);
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .bv-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+    }
+    .bv-card-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .bv-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .bv-card:hover img { transform: scale(1.04); }
+    
+    .bv-card-body {
+      padding: 22px 22px 20px;
+    }
+    .bv-ville {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--dark);
+    }
+    .bv-type {
+      font-size: 0.80rem;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .bv-details {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+      border-top: 1px solid rgba(0,0,0,0.07);
+    }
+    .bv-detail {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.83rem;
+      color: var(--text-light);
+    }
+    .bv-detail-icon { color: var(--gold); font-size: 0.9rem; }
+
+    /* CARTE HERO (grand bien en avant) */
+    .bv-featured {
+      grid-column: span 2;
+    }
+    .bv-featured img {
+      aspect-ratio: 16/9;
+    }
+    .bv-featured .bv-ville { font-size: 1.5rem; }
+
+    /* COMPTEUR */
+    .bv-counter {
+      background: var(--dark);
+      padding: 48px 0;
+    }
+    .bv-counter-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .bv-counter-text h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: var(--white);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .bv-counter-text p {
+      color: rgba(255,255,255,0.60);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .bv-grid { grid-template-columns: repeat(2, 1fr); }
+      .bv-featured { grid-column: span 2; }
+    }
+    @media (max-width: 600px) {
+      .bv-grid { grid-template-columns: 1fr; }
+      .bv-featured { grid-column: span 1; }
+      .bv-stats { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Cebeillac Immobilier Vichy" class="logo-img">
+      </a>
+      <button class="burger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link">Accueil</a>
+        <a href="mes-services.html" class="nav-link">Mes Services</a>
+        <a href="biens-vendus.html" class="nav-link active">Biens Vendus</a>
+        <a href="estimez-votre-bien.html" class="nav-link">Estimez Votre Bien</a>
+        <a href="contact.html" class="nav-link nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO INTRO -->
+  <section class="bv-intro">
+    <p class="eyebrow">Références</p>
+    <h1>Ils m'ont confié leurs ventes</h1>
+    <p>De l'estimation à la signature, chaque transaction est le fruit d'un accompagnement sur mesure. Retrouvez ici une sélection de biens vendus au cours de cette dernière année, témoins de la confiance que me font mes clients.</p>
+    <div class="bv-stats">
+      <div class="bv-stat">
+        <span class="bv-stat-num">7+</span>
+        <span class="bv-stat-label">Biens vendus avec moi</span>
+      </div>
+      <div class="bv-stat">
+        <span class="bv-stat-num">6</span>
+        <span class="bv-stat-label">Communes</span>
+      </div>
+
+      <div class="bv-stat">
+        <span class="bv-stat-num">100%</span>
+        <span class="bv-stat-label">Clients satisfaits</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="bv-section">
+    <div class="container">
+      <div class="bv-grid">
+
+        <!-- BIEN 1 : Vichy Appartement (featured) -->
+        <div class="bv-card bv-featured">
+          <div class="bv-card-img-wrap">
+            <img src="https://primary.jwwb.nl/public/g/e/l/temp-ftejxysypzqlziuuwjpv/img_2486-high-ikqgym.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200" alt="Appartement vendu à Vichy">
+          </div>
+          <div class="bv-card-body">
+            <div class="bv-ville">Vichy</div>
+            <div class="bv-type">Appartement</div>
+            <div class="bv-details">
+              <span class="bv-detail"><span class="bv-detail-icon">📍</span> Vichy, Allier (03)</span>
+            </div>
+          </div>
+        </div>
+        <!-- BIEN 2 : Immeuble Vichy -->
+        <div class="bv-card">
+          <div class="bv-card-img-wrap">
+            <img src="immeuble-vichy.jpg" alt="Immeuble vendu à Vichy">
+          </div>
+          <div class="bv-card-body">
+            <div class="bv-ville">Vichy</div>
+            <div class="bv-type">Immeuble</div>
+            <div class="bv-details">
+              <span class="bv-detail"><span class="bv-detail-icon">📍</span> Vichy, Allier (03)</span>
+            </div>
+          </div>
+        </div>
+        <!-- BIEN 3 : Vichy Appartement -->
+        <div class="bv-card">
+          <div class="bv-card-img-wrap">
+            <img src="https://primary.jwwb.nl/public/g/e/l/temp-ftejxysypzqlziuuwjpv/unnamed-8-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200" alt="Appartement vendu à Vichy">
+          </div>
+          <div class="bv-card-body">
+            <div class="bv-ville">Vichy</div>
+            <div class="bv-type">Appartement</div>
+            <div class="bv-details">
+              <span class="bv-detail"><span class="bv-detail-icon">📍</span> Vichy, Allier (03)</span>
+            </div>
+          </div>
+        </div>
+        <!-- BIEN 4 : Bellerive-sur-Allier -->
+        <div class="bv-card">
+          <div class="bv-card-img-wrap">
+            <img src="https://primary.jwwb.nl/public/g/e/l/temp-ftejxysypzqlziuuwjpv/unnamed-9-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200" alt="Maison vendue à Bellerive-sur-Allier">
+          </div>
+          <div class="bv-card-body">
+            <div class="bv-ville">Bellerive-sur-Allier</div>
+            <div class="bv-type">Maison individuelle</div>
+            <div class="bv-details">
+              <span class="bv-detail"><span class="bv-detail-icon">📍</span> Bellerive-sur-Allier (03)</span>
+            </div>
+          </div>
+        </div>
+        <!-- BIEN 5 : Puy-Guillaume -->
+        <div class="bv-card">
+          <div class="bv-card-img-wrap">
+            <img src="https://primary.jwwb.nl/public/g/e/l/temp-ftejxysypzqlziuuwjpv/unnamed-11-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200" alt="Maison vendue à Puy-Guillaume">
+          </div>
+          <div class="bv-card-body">
+            <div class="bv-ville">Puy-Guillaume</div>
+            <div class="bv-type">Maison individuelle</div>
+            <div class="bv-details">
+              <span class="bv-detail"><span class="bv-detail-icon">📍</span> Puy-Guillaume (63)</span>
+            </div>
+          </div>
+        </div>
+        <!-- BIEN 6 : Mariol -->
+        <div class="bv-card">
+          <div class="bv-card-img-wrap">
+            <img src="https://primary.jwwb.nl/public/g/e/l/temp-ftejxysypzqlziuuwjpv/unnamed-10-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200" alt="Maison vendue à Mariol">
+          </div>
+          <div class="bv-card-body">
+            <div class="bv-ville">Mariol</div>
+            <div class="bv-type">Maison individuelle</div>
+            <div class="bv-details">
+              <span class="bv-detail"><span class="bv-detail-icon">📍</span> Mariol, Allier (03)</span>
+            </div>
+          </div>
+        </div>
+        <!-- BIEN 7 : Clermont-Ferrand -->
+        <div class="bv-card">
+          <div class="bv-card-img-wrap">
+            <img src="https://primary.jwwb.nl/public/g/e/l/temp-ftejxysypzqlziuuwjpv/unnamed-13-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200" alt="Maison vendue à Clermont-Ferrand">
+          </div>
+          <div class="bv-card-body">
+            <div class="bv-ville">Clermont-Ferrand</div>
+            <div class="bv-type">Maison individuelle</div>
+            <div class="bv-details">
+              <span class="bv-detail"><span class="bv-detail-icon">📍</span> Clermont-Ferrand (63)</span>
+            </div>
+          </div>
+        </div>
+        <!-- BIEN 8 : Royat -->
+        <div class="bv-card">
+          <div class="bv-card-img-wrap">
+            <img src="https://primary.jwwb.nl/public/g/e/l/temp-ftejxysypzqlziuuwjpv/img_2026-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200" alt="Appartement vendu à Royat">
+          </div>
+          <div class="bv-card-body">
+            <div class="bv-ville">Royat</div>
+            <div class="bv-type">Appartement</div>
+            <div class="bv-details">
+              <span class="bv-detail"><span class="bv-detail-icon">📍</span> Royat (63)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDEAU CTA -->
+  <section class="bv-counter">
+    <div class="bv-counter-inner">
+      <div class="bv-counter-text">
+        <h2>Votre bien pourrait être le prochain.</h2>
+        <p>Contactez-moi pour en discuter, sans engagement.</p>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="estimez-votre-bien.html" class="btn btn-gold">Estimer mon bien</a>
+        <a href="contact.html" class="btn btn-outline-white">Me contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 Samuel Chevalier – Cebeillac Immobilier Vichy</p>
+      <nav class="footer-nav">
+        <a href="index.html">Accueil</a>
+        <a href="mes-services.html">Mes Services</a>
+        <a href="biens-vendus.html">Biens Vendus</a>
+        <a href="estimez-votre-bien.html">Estimation</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
