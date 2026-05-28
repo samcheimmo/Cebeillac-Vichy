@@ -128,7 +128,7 @@
     <div class="container" style="max-width:660px;">
       <h2 class="section-title">Demandez votre estimation gratuite</h2>
       <p class="section-sub" style="margin-bottom:32px;">Remplissez le formulaire ci-dessous ou contactez-moi directement. Je vous réponds sous 24h.</p>
-      <div style="display:flex;flex-direction:column;gap:16px;text-align:left;">
+     <form name="estimation" method="POST" data-netlify="true" style="display:flex;flex-direction:column;gap:16px;text-align:left;">
         <div class="form-group">
           <label>Votre nom</label>
           <input type="text" placeholder="Nom et prénom">
@@ -161,10 +161,10 @@
           <label>Informations complémentaires</label>
           <textarea placeholder="Surface approximative, nombre de pièces, état général..."></textarea>
         </div>
-        <a href="mailto:s.chevalier@cebeillac.fr" class="btn btn-gold" style="text-align:center;">Envoyer ma demande</a>
+        <button type="submit" class="btn btn-gold" style="text-align:center;">Envoyer ma demande</button>
+     </form>
         <p style="text-align:center;font-size:0.82rem;color:var(--text-light)">Ou appelez directement : <a href="tel:+33781281949" style="color:var(--gold);font-weight:600;">07 81 28 19 49</a></p>
       </div>
-    </div>
   </section>
 
   <!-- FOOTER -->
