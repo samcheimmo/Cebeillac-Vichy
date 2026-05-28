@@ -90,6 +90,7 @@
       <div>
         <p class="eyebrow" style="margin-bottom:20px;">Formulaire de contact</p>
         <form name="contact" method="POST" data-netlify="true" class="contact-form">
+          <input type="hidden" name="form-name" value="contact">
           <div class="form-row">
             <div class="form-group">
               <label>Prénom</label>
@@ -118,7 +119,6 @@
               <option>Gestion locative</option>
               <option>Autre question</option>
             </select>
-          </form>
           <div class="form-group">
             <label>Votre message</label>
             <textarea placeholder="Décrivez votre projet ou votre question..."></textarea>
@@ -127,7 +127,7 @@
           <p style="font-size:0.80rem;color:var(--text-light);margin-top:8px;">
             En soumettant ce formulaire, vous acceptez d'être recontacté.
           </p>
-        </div>
+        </from>
       </div>
 
     </div>
