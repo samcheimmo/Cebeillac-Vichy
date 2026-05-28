@@ -89,7 +89,7 @@
       <!-- FORMULAIRE -->
       <div>
         <p class="eyebrow" style="margin-bottom:20px;">Formulaire de contact</p>
-        <div class="contact-form">
+        <form name="contact" method="POST" data-netlify="true" class="contact-form">
           <div class="form-row">
             <div class="form-group">
               <label>Prénom</label>
@@ -118,14 +118,14 @@
               <option>Gestion locative</option>
               <option>Autre question</option>
             </select>
-          </div>
+          </form>
           <div class="form-group">
             <label>Votre message</label>
             <textarea placeholder="Décrivez votre projet ou votre question..."></textarea>
           </div>
-          <a href="mailto:s.chevalier@cebeillac.fr" class="btn btn-gold">Envoyer le message</a>
+          <button type="submit" class="btn btn-gold">Envoyer le message</button>
           <p style="font-size:0.80rem;color:var(--text-light);margin-top:8px;">
-            En soumettant ce formulaire, vous acceptez d'être recontacté par moi concernant votre demande.
+            En soumettant ce formulaire, vous acceptez d'être recontacté.
           </p>
         </div>
       </div>
